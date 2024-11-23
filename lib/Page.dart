@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:outils/PageHome.dart';
 
 class Page1 extends StatefulWidget {
@@ -11,19 +12,39 @@ class Page1 extends StatefulWidget {
 }
 
 class _Page1State extends State<Page1> {
-  // Fonction pour générer les conteneurs d'images dynamiquement
+  int activeIndex1 = 0;
+  final List<String> images1 = [
+    'assets/verre1.png',
+    'assets/tasse.png',
+    'assets/plant.png',
+  ];
+  int activeIndex2 = 0;
+  final List<String> images2 = [
+    'assets/canapé.png',
+    'assets/light.png',
+    'assets/light.png',
+  ];
+  bool card1 = false, card2 = false;
+  Widget favorite(bool i) {
+    if (i == true) {
+      return const Icon(Icons.favorite, color: Colors.red);
+    } else {
+      return const Icon(Icons.favorite_border);
+    }
+  }
+
   Widget buildImageCard(String imagePath, String label) {
     return Container(
       height: 150,
-      width: 100,
+      width: 110,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
       ),
       child: Column(
         children: [
           Container(
-            height: 100,
-            width: 100,
+            height: 110,
+            width: 110,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: Colors.white,
@@ -36,7 +57,7 @@ class _Page1State extends State<Page1> {
               ),
             ),
           ),
-          const SizedBox(height: 5), // Espace entre l'image et le texte
+          const SizedBox(height: 5),
           Text(
             label,
             style: const TextStyle(fontWeight: FontWeight.bold),
@@ -50,54 +71,54 @@ class _Page1State extends State<Page1> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(top: 20),
+        padding: const EdgeInsets.only(top: 40),
         child: ListView(
           children: [
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.place,
                         color: Color(0xff3fca75),
-                        size: 40,
+                        size: 35,
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             'Express delivery',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
+                            style: GoogleFonts.onest(
+                                fontWeight: FontWeight.normal,
+                                color: Colors.grey),
                           ),
                           Text(
                             'Leipzig Street, 21',
-                            style: TextStyle(color: Colors.grey),
+                            style:
+                                GoogleFonts.onest(fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                     ],
                   ),
-                  Icon(
+                  const Icon(
                     Icons.notifications_outlined,
-                    size: 40,
+                    size: 35,
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 decoration: BoxDecoration(
-                  color: Colors.grey[200],
+                  color: const Color(0xffF3F3F7),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Row(
@@ -112,6 +133,10 @@ class _Page1State extends State<Page1> {
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'Search',
+                          hintStyle: TextStyle(
+                            fontSize: 23.0,
+                            color: Color(0xffC1C1C3),
+                          ),
                           border: InputBorder.none,
                         ),
                       ),
@@ -128,9 +153,9 @@ class _Page1State extends State<Page1> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 18),
             Padding(
-              padding: const EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(top: 10, left: 15, right: 0),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -144,19 +169,19 @@ class _Page1State extends State<Page1> {
                           );
                         },
                         child: buildImageCard("assets/home.jpg", "Home")),
-                    const SizedBox(width: 20),
-                    buildImageCard("assets/clothes.jpeg", "Office"),
-                    const SizedBox(width: 20),
-                    buildImageCard("assets/electro.jpeg", "Market"),
-                    const SizedBox(width: 20),
+                    const SizedBox(width: 10),
+                    buildImageCard("assets/clothes.jpeg", "Clothes"),
+                    const SizedBox(width: 10),
+                    buildImageCard("assets/div-3-page1.jpg", "Electronics"),
+                    const SizedBox(width: 10),
                     buildImageCard("assets/city.jpeg", "city"),
                   ],
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 2),
             Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
@@ -166,17 +191,19 @@ class _Page1State extends State<Page1> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           "Down payment 0%",
-                          style: TextStyle(color: Colors.white, fontSize: 25),
+                          style: GoogleFonts.onest(
+                              color: Colors.white, fontSize: 20),
                         ),
-                        SizedBox(height: 5),
+                        const SizedBox(height: 5),
                         Text(
                           'Action from 1-30 April',
-                          style: TextStyle(color: Colors.grey, fontSize: 16),
+                          style: GoogleFonts.onest(
+                              color: Colors.grey, fontSize: 13),
                         ),
                       ],
                     ),
@@ -184,14 +211,14 @@ class _Page1State extends State<Page1> {
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(7)),
+                            borderRadius: BorderRadius.circular(12)),
                         backgroundColor: const Color(0xffffffff),
                       ),
-                      child: const Text(
+                      child: Text(
                         "LokkeStore",
-                        style: TextStyle(
+                        style: GoogleFonts.onest(
                             color: Colors.black,
-                            fontSize: 15,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -200,21 +227,22 @@ class _Page1State extends State<Page1> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.only(
+                  top: 10, left: 15, right: 15, bottom: 20),
               child: Row(
                 children: [
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         color: const Color(0xff000000)),
-                    child: const Center(
+                    child: Center(
                       child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
                         child: Text(
                           "For you",
-                          style:
-                              TextStyle(color: Color(0xffffffff), fontSize: 18),
+                          style: GoogleFonts.onest(
+                              color: const Color(0xffffffff), fontSize: 14),
                         ),
                       ),
                     ),
@@ -226,24 +254,24 @@ class _Page1State extends State<Page1> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
                         color: const Color(0xD5d5d5d5)),
-                    child: const Center(
+                    child: Center(
                       child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20, vertical: 10),
                         child: Row(
                           children: [
-                            Image(
+                            const Image(
                               image: AssetImage("vector.jpg"),
                               width: 20,
                               height: 20,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 7,
                             ),
                             Text(
                               "Price of the day",
-                              style: TextStyle(
-                                  color: Color(0xff000000), fontSize: 18),
+                              style: GoogleFonts.onest(
+                                  color: const Color(0xff000000), fontSize: 16),
                             ),
                           ],
                         ),
@@ -258,7 +286,7 @@ class _Page1State extends State<Page1> {
                         Text(
                           'View all',
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 16),
+                              fontWeight: FontWeight.bold, fontSize: 14),
                         ),
                         SizedBox(height: 5),
                         Icon(Icons.arrow_forward_ios)
@@ -269,7 +297,7 @@ class _Page1State extends State<Page1> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+              padding: const EdgeInsets.only(left: 20, top: 25, right: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -280,27 +308,93 @@ class _Page1State extends State<Page1> {
                         child: Stack(
                           children: [
                             Container(
-                              height: 200,
-                              width: 175,
+                              height: 220,
+                              width: 185,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                                 color: const Color(0xffd5d5d5),
                               ),
-                              child: Image.asset("assets/verre1.png"),
+                              child: Image.asset(images1[activeIndex1]),
                             ),
-                            const Positioned(
+                            Positioned(
                                 right: 10,
                                 top: 10,
-                                child: Icon(Icons.favorite_border))
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      card2 = !card2;
+                                    });
+                                  },
+                                  child: favorite(card2),
+                                )),
+                            Positioned(
+                                right: 10,
+                                bottom: 10,
+                                child: Row(
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () => {
+                                        setState(() {
+                                          activeIndex1 = 0;
+                                        }),
+                                      },
+                                      child: Container(
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          color: const Color(0xffc5c5c5),
+                                        ),
+                                        width: 10,
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () => {
+                                        setState(() {
+                                          activeIndex1 = 1;
+                                        }),
+                                      },
+                                      child: Container(
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          color: const Color(0xffc5c5c5),
+                                        ),
+                                        width: 10,
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: () => {
+                                        setState(() {
+                                          activeIndex1 = 2;
+                                        }),
+                                      },
+                                      child: Container(
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          color: const Color(0xffc5c5c5),
+                                        ),
+                                        width: 10,
+                                      ),
+                                    ),
+                                  ],
+                                ))
                           ],
                         ),
                       ),
-                      const Text(
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
                         "Glass, light blue",
-                        style: TextStyle(fontSize: 18),
+                        style: GoogleFonts.onest(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       const Text(
-                        "4E",
+                        "4€",
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -313,61 +407,93 @@ class _Page1State extends State<Page1> {
                         child: Stack(
                           children: [
                             Container(
-                              height: 200,
-                              width: 175,
+                              height: 220,
+                              width: 180,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
                                 color: const Color(0xffd5d5d5),
                               ),
-                              child: Image.asset("assets/verre1.png"),
+                              child: Image.asset(images2[activeIndex2]),
                             ),
-                            const Positioned(
+                            Positioned(
                                 right: 10,
                                 top: 10,
-                                child: Icon(Icons.favorite_border)),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      card1 = !card1;
+                                    });
+                                  },
+                                  child: favorite(card1),
+                                )),
                             Positioned(
                                 right: 10,
                                 bottom: 10,
                                 child: Row(
                                   children: [
-                                    Container(
-                                      height: 10,
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        color: const Color(0xff000000),
+                                    GestureDetector(
+                                      onTap: () => {
+                                        setState(() {
+                                          activeIndex2 = 0;
+                                        }),
+                                      },
+                                      child: Container(
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          color: const Color(0xff000000),
+                                        ),
+                                        width: 10,
                                       ),
-                                      width: 10,
                                     ),
-                                    Container(
-                                      height: 10,
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        color: const Color(0xffc5c5c5),
+                                    GestureDetector(
+                                      onTap: () => {
+                                        setState(() {
+                                          activeIndex2 = 1;
+                                        }),
+                                      },
+                                      child: Container(
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          color: const Color(0xffc5c5c5),
+                                        ),
+                                        width: 10,
                                       ),
-                                      width: 10,
                                     ),
-                                    Container(
-                                      height: 10,
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(100),
-                                        color: const Color(0xffc5c5c5),
+                                    GestureDetector(
+                                      onTap: () => {
+                                        setState(() {
+                                          activeIndex2 = 2;
+                                        }),
+                                      },
+                                      child: Container(
+                                        height: 10,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(100),
+                                          color: const Color(0xffc5c5c5),
+                                        ),
+                                        width: 10,
                                       ),
-                                      width: 10,
                                     ),
                                   ],
                                 ))
                           ],
                         ),
                       ),
-                      const Text(
-                        "Glass, light blue",
-                        style: TextStyle(fontSize: 18),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Sweivei  chair",
+                        style: GoogleFonts.onest(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                       const Text(
-                        "4E",
+                        "120€",
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold),
                       ),
@@ -380,31 +506,32 @@ class _Page1State extends State<Page1> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // Permet un affichage constant
-        selectedItemColor:
-            const Color(0xff3fca75), // Couleur des éléments sélectionnés
-        unselectedItemColor:
-            Colors.grey, // Couleur des éléments non sélectionnés
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: const Color(0xff000000),
+        unselectedItemColor: Colors.grey,
         onTap: (index) {
-          // Logique pour gérer le changement de page
           print("Index sélectionné : $index");
         },
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: Icon(Icons.credit_card),
+            label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
+            icon: Icon(Icons.card_travel_outlined),
+            label: '',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+            icon: Icon(Icons.favorite_border),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: '',
           ),
         ],
       ),
