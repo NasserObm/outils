@@ -290,8 +290,8 @@ class _PagehomeState extends State<Pagehome> {
                         alignment: Alignment.center,
                         children: [
                           Image.asset(
-                            "assets/canape.jpg",
-                            width: 150,
+                            "assets/canap.jpg",
+                            width: 250,
                             height: 200,
                             fit: BoxFit.cover,
                           ),
