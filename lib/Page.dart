@@ -22,7 +22,7 @@ class _Page1State extends State<Page1> {
   final List<String> images2 = [
     'assets/canapé.png',
     'assets/light.png',
-    'assets/light.png',
+    'assets/tasse.png',
   ];
   bool card1 = false, card2 = false;
   Widget favorite(bool i) {
@@ -253,7 +253,7 @@ class _Page1State extends State<Page1> {
                   Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: const Color(0xD5d5d5d5)),
+                        color: const Color(0xfff3f3f7)),
                     child: Center(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -312,7 +312,7 @@ class _Page1State extends State<Page1> {
                               width: 185,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: const Color(0xffd5d5d5),
+                                color: const Color(0xfff3f3f7),
                               ),
                               child: Image.asset(images1[activeIndex1]),
                             ),
@@ -348,6 +348,9 @@ class _Page1State extends State<Page1> {
                                         width: 10,
                                       ),
                                     ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
                                     GestureDetector(
                                       onTap: () => {
                                         setState(() {
@@ -363,6 +366,9 @@ class _Page1State extends State<Page1> {
                                         ),
                                         width: 10,
                                       ),
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
                                     ),
                                     GestureDetector(
                                       onTap: () => {
@@ -411,7 +417,7 @@ class _Page1State extends State<Page1> {
                               width: 180,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: const Color(0xffd5d5d5),
+                                color: const Color(0xfff3f3f7),
                               ),
                               child: Image.asset(images2[activeIndex2]),
                             ),
@@ -447,6 +453,9 @@ class _Page1State extends State<Page1> {
                                         width: 10,
                                       ),
                                     ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
                                     GestureDetector(
                                       onTap: () => {
                                         setState(() {
@@ -462,6 +471,9 @@ class _Page1State extends State<Page1> {
                                         ),
                                         width: 10,
                                       ),
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
                                     ),
                                     GestureDetector(
                                       onTap: () => {
